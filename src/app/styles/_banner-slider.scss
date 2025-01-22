@@ -1,0 +1,46 @@
+$active-shadow:
+  0 10px 20px 0 rgba(0, 0, 0, 0.15),
+  0 6px 6px 0 rgba(0, 0, 0, 0.1);
+$inactive-shadow:
+  0 4px 8px 0 rgba(0, 0, 0, 0.1),
+  0 2px 2px 0 rgba(0, 0, 0, 0.05);
+$background-color: #fff;
+
+.slider {
+  margin: 0 auto;
+  position: relative;
+  perspective: 1000px;
+  transform-style: preserve-3d;
+
+  input[type='radio'] {
+    display: none;
+  }
+
+  .slider-item {
+    margin: auto;
+    background-color: $background-color;
+    display: flex;
+    position: absolute;
+    left: 0;
+    right: 0;
+    cursor: pointer;
+    transition:
+      transform 0.4s ease,
+      box-shadow 0.4s ease;
+
+    &.is-active {
+      box-shadow: $active-shadow;
+      transform: translate3d(0, 0, 0);
+    }
+
+    &.is-left {
+      box-shadow: $inactive-shadow;
+      transform: translate3d(-30%, 0, -100px);
+    }
+
+    &.is-right {
+      box-shadow: $inactive-shadow;
+      transform: translate3d(30%, 0, -100px);
+    }
+  }
+}
